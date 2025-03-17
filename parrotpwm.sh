@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# Comprobar si el usuario actual es root
+# Comprobar si el script está siendo ejecutado como root
 if [ "$UID" -eq 0 ]; then
     echo "No se puede ejecutar como root."
     exit 1
 else
     # Comprobar si se está usando sudo
     if [ -n "$SUDO_USER" ]; then
-        echo "No uses sudo"
+        echo "No uses sudo, ejecuta el script directamente."
         exit 1
     fi
 fi
 
 echo "
-██╗  ██╗ █████╗ ██╗     ██╗██████╗ ██╗    ██╗███╗   ███╗
-██║ ██╔╝██╔══██╗██║     ██║██╔══██╗██║    ██║████╗ ████║
-█████╔╝ ███████║██║     ██║██████╔╝██║ █╗ ██║██╔████╔██║
-██╔═██╗ ██╔══██║██║     ██║██╔═══╝ ██║███╗██║██║╚██╔╝██║
-██║  ██╗██║  ██║███████╗██║██║     ╚███╔███╔╝██║ ╚═╝ ██║
-╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝╚═╝      ╚══╝╚══╝ ╚═╝     ╚═╝
+_____                    _  ______ _    ____  ___
+| ___ \                  | | | ___ \ |  | |  \/  |
+| |_/ /_ _ _ __ _ __ ___ | |_| |_/ / |  | | .  . |
+|  __/ _` | '__| '__/ _ \| __|  __/| |/\| | |\/| |
+| | | (_| | |  | | | (_) | |_| |   \  /\  / |  | |
+\_|  \__,_|_|  |_|  \___/ \__\_|    \/  \/\_|  |_/
+                                                                                     
 "
 sleep 2
 echo -e "[+] Script de automatización de entorno de hacking profesional."
-echo -e "[+] @afsh4ck - Sígueme en: YouTube, Instagram, TikTok"
 sleep 3
 echo -e "\n[*] Configurando la instalación..\n"
 sleep 4
@@ -30,15 +30,15 @@ sleep 4
 RPATH=`pwd`
 
 # Actualizar y actualizar todo
-sudo apt update && sudo apt -y full-upgrade
+sudo apt update && sudo apt -y parrot-upgrade
 
 # Instalar paquetes
 sudo apt install -y git vim feh scrot scrub zsh rofi xclip xsel locate neofetch wmname acpi bspwm sxhkd \
-imagemagick ranger tmux python3-pip font-manager lsd 
+imagemagick ranger tmux python3-pip font-manager lsd
 
 # Instalar dependencias del entorno
 sudo apt install -y build-essential libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
-libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev # (xcb removed)
+libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
 
 # Instalar requisitos de polybar
 sudo apt install -y cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev \
@@ -71,29 +71,28 @@ cp -v $RPATH/CONFIGS/p10k.zsh ~/.p10k.zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 rm -f ~/.zshrc
-# ¿Instalar zsh-autocomplete?
 cp -v $RPATH/CONFIGS/zshrc ~/.zshrc
 
 # Instalar fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 yes | ~/.fzf/install
 
-# .tmux
+# Instalar .tmux
 rm -rf ~/.tmux
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf ~/
 cp -v $RPATH/CONFIGS/tmux.conf.local ~/.tmux.conf.local
 
-# nvim
+# Instalar neovim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -O /tmp/nvim-linux64.tar.gz
 sudo tar xzvf /tmp/nvim-linux64.tar.gz --directory=/opt
 sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 sudo rm -f /opt/nvim-linux64.tar.gz
 
-# nvchad - necesita trabajo. Bloquear cursor e interacción del usuario
+# Instalar NvChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
-# batcat
+# Instalar batcat
 wget https://github.com/sharkdp/bat/releases/download/v0.24.0/bat_0.24.0_amd64.deb -O /tmp/bat.deb
 sudo dpkg -i /tmp/bat.deb
 
@@ -124,19 +123,14 @@ ninja -C build
 sudo ninja -C build install
 
 # Cambiar zona horaria
-# Para listar zonas horarias ejecutar: timedatectl list-timezones
 sudo timedatectl set-timezone "Europe/Bruselas"
 
+# Configuración y copiado de archivos
 mkdir ~/screenshots
-# Copiar todos los archivos de configuración
 cp -rv $RPATH/CONFIGS/config/* ~/.config/
-
-# Copiar scripts
 cp -rv $RPATH/SCRIPTS/* ~/.config/polybar/forest/scripts/
 sudo ln -s ~/.config/polybar/forest/scripts/target.sh /usr/bin/target
 sudo ln -s ~/.config/polybar/forest/scripts/screenshot.sh /usr/bin/screenshot
-
-# Copiar wallpapers
 mkdir ~/Wallpapers/
 cp -rv $RPATH/WALLPAPERS/* ~/Wallpapers/
 
@@ -146,21 +140,6 @@ chmod +x ~/.config/bspwm/scripts/bspwm_resize
 chmod +x ~/.config/polybar/launch.sh
 chmod +x ~/.config/polybar/forest/scripts/target.sh
 chmod +x ~/.config/polybar/forest/scripts/screenshot.sh
-
-# Seleccionar tema de rofi
-# rofi-theme-selector
-
-# Habilitar toque para hacer clic y cambiar dirección de desplazamiento del touchpad (portátiles) https://cravencode.com/post/essentials/enable-tap-to-click-in-i3wm/
-# sudo mkdir -p /etc/X11/xorg.conf.d && sudo tee <<'EOF' /etc/X11/xorg.conf.d/90-touchpad.conf 1> /dev/null
-# Section "InputClass"
-#        Identifier "touchpad"
-#        MatchIsTouchpad "on"
-#        Driver "libinput"
-#        Option "Tapping" "on"
-#        Option "NaturalScrolling" "on"
-# EndSection
-#
-# EOF
 
 # Limpiar archivos
 rm -rf ~/github
