@@ -86,4 +86,4 @@ NVim + NVChad
 ```
 ## Créditos
 - Autor del fork:       fl0rkx
-- Autor del proyecto original :  
+- Autor del proyecto original :  <a href="https://github.com/afsh4ck">afsh4ck</a>
