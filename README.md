@@ -49,7 +49,7 @@ La apariencia de la terminal no viene en el script, unicamente el aspecto del te
 | .config/sxhkd/sxhkdrc       | Archivo de configuración de atajos (sxhkd)                  |
 | .config/bspwm/bspwmrc       | Archivo de configuración de BSPWM                           |
 | .config/polybar             | Carpeta con temas de Polybar                                |
-| ~/Wallpapers                | Carpeta de fondos de pantalla. Se permite todos los archivos que terminen en .jpg  |
+| ~/Wallpapers                | Carpeta de fondos de pantalla. Se permite todos los archivos. Para hacerlo más especifico ponemos poner *.png ó *.jpg  |
 | target 10.0.0.1             | Selecciona una IP de destino y se muestra en la Polybar     |
 | target reset                | Elimina el objetivo seleccionado                            |
 | tmux                        | Cambia la terminal a tmux                                   |
