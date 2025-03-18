@@ -5,7 +5,7 @@ vmware-user-suid-wrapper &
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d I II III IV V VI VII 
 
 bspc config border_width         2
 bspc config window_gap          12
@@ -21,7 +21,7 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 
 # WALLPAPER
-feh --bg-fill ~/Wallpapers/wallpaper.*
+feh --bg-fill -z ~/Wallpapers/*
 
 # POLYBAR
 ~/.config/polybar/launch.sh --forest
@@ -31,6 +31,9 @@ bspc config focus_follows_pointer true
 
 # PICOM
 picom &
-bspc config border_width 0
+bspc config border_width 2
+
+bspc config active_border_color "#ff5733"
+bspc config normal_border_color "#8bcc6a"
 
 xsetroot -cursor_name left_ptr &
