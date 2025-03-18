@@ -73,15 +73,6 @@ git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf ~/
 cp -v $RPATH/CONFIGS/tmux.conf.local ~/.tmux.conf.local
 
-# nvim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -O /tmp/nvim-linux64.tar.gz
-sudo tar xzvf /tmp/nvim-linux64.tar.gz --directory=/opt
-sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
-sudo rm -f /opt/nvim-linux64.tar.gz
-
-# nvchad - necesita trabajo. Bloquear cursor e interacción del usuario
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-
 # batcat
 wget https://github.com/sharkdp/bat/releases/download/v0.24.0/bat_0.24.0_amd64.deb -O /tmp/bat.deb
 sudo dpkg -i /tmp/bat.deb
