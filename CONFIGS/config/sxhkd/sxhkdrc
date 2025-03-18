@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	mate-terminal	
+	mate-terminal
 
 # program launcher
 super + d
