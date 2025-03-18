@@ -79,11 +79,15 @@ Rofi
 Sxhkd
 Picom
 ```
-## Paquetes que puedes instalar manualmente
+## Paquetes que puedes instalar manualmente usando un script espcialmente para ello.
 ```
 NVim + NVChad
 
 ```
+### NeoVim + NvChad
+> [!NOTE]
+> El script debe de ejecutarse con permisos root. Siempre bajo vuestra responsabilidad.
+
 ## Créditos
 - Autor del fork:      <a href="https://github.com/fl0rkx">fl0rkx</a>
 - Autor del proyecto original :  <a href="https://github.com/afsh4ck">afsh4ck</a>
