@@ -1,44 +1,33 @@
 #!/bin/bash
 
-# Comprobar si el script está siendo ejecutado como root
+# Comprobar si el usuario actual es root
 if [ "$UID" -eq 0 ]; then
     echo "No se puede ejecutar como root."
     exit 1
 else
     # Comprobar si se está usando sudo
     if [ -n "$SUDO_USER" ]; then
-        echo "No uses sudo, ejecuta el script directamente."
+        echo "No uses sudo"
         exit 1
     fi
 fi
 
-echo "
-_____                    _  ______ _    ____  ___
-| ___ \                  | | | ___ \ |  | |  \/  |
-| |_/ /_ _ _ __ _ __ ___ | |_| |_/ / |  | | .  . |
-|  __/ _` | '__| '__/ _ \| __|  __/| |/\| | |\/| |
-| | | (_| | |  | | | (_) | |_| |   \  /\  / |  | |
-\_|  \__,_|_|  |_|  \___/ \__\_|    \/  \/\_|  |_/
-                                                                                     
-"
-sleep 2
-echo -e "[+] Script de automatización de entorno de hacking profesional."
-sleep 3
+echo -e "[+] Script de automatización parcial de un entorno de hacking profesional."
 echo -e "\n[*] Configurando la instalación..\n"
 sleep 4
 
 RPATH=`pwd`
 
 # Actualizar y actualizar todo
-sudo apt update && sudo apt -y parrot-upgrade
+sudo apt update && sudo apt -y full-upgrade
 
 # Instalar paquetes
 sudo apt install -y git vim feh scrot scrub zsh rofi xclip xsel locate neofetch wmname acpi bspwm sxhkd \
-imagemagick ranger tmux python3-pip font-manager lsd
+imagemagick ranger tmux python3-pip font-manager lsd 
 
 # Instalar dependencias del entorno
 sudo apt install -y build-essential libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
-libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
+libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev # (xcb removed)
 
 # Instalar requisitos de polybar
 sudo apt install -y cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev \
@@ -71,28 +60,29 @@ cp -v $RPATH/CONFIGS/p10k.zsh ~/.p10k.zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 rm -f ~/.zshrc
+# ¿Instalar zsh-autocomplete?
 cp -v $RPATH/CONFIGS/zshrc ~/.zshrc
 
 # Instalar fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 yes | ~/.fzf/install
 
-# Instalar .tmux
+# .tmux
 rm -rf ~/.tmux
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 ln -s -f ~/.tmux/.tmux.conf ~/
 cp -v $RPATH/CONFIGS/tmux.conf.local ~/.tmux.conf.local
 
-# Instalar neovim
+# nvim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz -O /tmp/nvim-linux64.tar.gz
 sudo tar xzvf /tmp/nvim-linux64.tar.gz --directory=/opt
 sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 sudo rm -f /opt/nvim-linux64.tar.gz
 
-# Instalar NvChad
+# nvchad - necesita trabajo. Bloquear cursor e interacción del usuario
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
 
-# Instalar batcat
+# batcat
 wget https://github.com/sharkdp/bat/releases/download/v0.24.0/bat_0.24.0_amd64.deb -O /tmp/bat.deb
 sudo dpkg -i /tmp/bat.deb
 
@@ -123,14 +113,19 @@ ninja -C build
 sudo ninja -C build install
 
 # Cambiar zona horaria
+# Para listar zonas horarias ejecutar: timedatectl list-timezones
 sudo timedatectl set-timezone "Europe/Bruselas"
 
-# Configuración y copiado de archivos
 mkdir ~/screenshots
+# Copiar todos los archivos de configuración
 cp -rv $RPATH/CONFIGS/config/* ~/.config/
+
+# Copiar scripts
 cp -rv $RPATH/SCRIPTS/* ~/.config/polybar/forest/scripts/
 sudo ln -s ~/.config/polybar/forest/scripts/target.sh /usr/bin/target
 sudo ln -s ~/.config/polybar/forest/scripts/screenshot.sh /usr/bin/screenshot
+
+# Copiar wallpapers
 mkdir ~/Wallpapers/
 cp -rv $RPATH/WALLPAPERS/* ~/Wallpapers/
 
