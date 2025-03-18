@@ -5,7 +5,7 @@ Despliega parcialmente un entorno de hacking usando un solo script.
 ![kalipwm-1](https://github.com/user-attachments/assets/0e11571f-7c71-416f-9bb8-32ab9c47d015)
 ![kalipwm-2](https://github.com/user-attachments/assets/b67853d2-922d-4303-90a8-4fbc2564555a)
 
-## Instalación y uso
+## Instalación
 
 - Se recomienda el uso de una instalación nueva/limpia de Parrot OS.
 - Testado en Parrot Security 6.3 (lorikeet) VirtualBox.
@@ -13,12 +13,16 @@ Despliega parcialmente un entorno de hacking usando un solo script.
 ```
 git clone https://github.com/fl0rkx/parrotospwm_fl0rkxs_edition.git
 cd parrotospwm_fl0rkxs_edition
-./parrotpwm.sh
+./parrotpwm.sh (en caso de que no se pueda ejecutar habrá que darle permisos con chmod +x parrotpwm.sh )
 sudo reboot (Al terminar la instalación.)
 ```
 - Una vez reiniciado cambia a bspwm en la pantalla de inicio de sesión.
 - Los fondos de pantalla salen de  ~/Wallpapers/
-eeeee
+
+## Personalización a tener en cuenta
+Para definir nuestra shell ZSH usamos el comando chsh -s $(which zsh) tanto en nuestro usuario como root.
+La apariencia de la terminal no viene en el script, unicamente el aspecto del tema para la ZSH.
+  
 ## Comandos
 
 > [!NOTE]
@@ -72,7 +76,7 @@ Feh
 Rofi
 Sxhkd
 Picom
-Neovim
+Neovim + NVChad
 ```
 
 ## Créditos
