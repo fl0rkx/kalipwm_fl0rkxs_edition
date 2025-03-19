@@ -1,7 +1,12 @@
 # ParrotPWM
 
 Despliega parcialmente un entorno de hacking usando un solo script.
-Imagenes
+
+![Entorno](https://github.com/fl0rkx/parrotospwm_fl0rkxs_edition/blob/main/.assets/Captura%20desde%202025-03-19%2000-06-47.png "Entorno")
+![Terminal](https://github.com/fl0rkx/parrotospwm_fl0rkxs_edition/blob/main/.assets/Captura%20desde%202025-03-19%2000-08-41.png "Terminal")
+![Tmux](https://github.com/fl0rkx/parrotospwm_fl0rkxs_edition/blob/main/.assets/Captura%20desde%202025-03-19%2000-41-08.png "Tmux")
+
+
 ## Instalación
 
 - Se recomienda el uso de una instalación nueva/limpia de Parrot OS.
