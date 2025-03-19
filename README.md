@@ -30,7 +30,6 @@ La apariencia de la terminal no viene en el script, unicamente el aspecto del te
 
 | Comando                     | Descripción                                                 |
 |-----------------------------|-------------------------------------------------------------|
-| Clic derecho en Polybar     | Cambia el tema de Polybar usando el menú del clic derecho.  |
 | Windows + 1,2,3,4           | Navega entre escritorios.                                   |
 | Windows + Enter             | Abre una nueva terminal.                                    |
 | Windows + Enter             | Divide la terminal actual.                                  |
