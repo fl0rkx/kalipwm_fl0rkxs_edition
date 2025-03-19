@@ -23,7 +23,7 @@ sudo apt update && sudo apt -y full-upgrade
 
 # Instalar paquetes
 sudo apt install -y git vim feh scrot scrub zsh rofi xclip xsel locate neofetch wmname acpi bspwm sxhkd \
-imagemagick ranger tmux python3-pip font-manager lsd 
+imagemagick ranger tmux python3-pip font-manager lsd
 
 # Instalar dependencias del entorno
 sudo apt install -y build-essential libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev \
@@ -102,6 +102,11 @@ git submodule update --init --recursive
 meson --buildtype=release . build
 ninja -C build
 sudo ninja -C build install
+
+# Instalar Python y bpython
+echo -e "\n[+] Instalando Python 3, pip y bpython..."
+sudo apt install -y python3 python3-pip
+pip3 install --user bpython
 
 # Cambiar zona horaria
 # Para listar zonas horarias ejecutar: timedatectl list-timezones
