@@ -83,7 +83,6 @@ Picom
 ## Paquetes que puedes instalar manualmente usando un script espcialmente para ello.
 ```
 NVim + NVChad
-
 ```
 ### NeoVim + NvChad
 > [!NOTE]
