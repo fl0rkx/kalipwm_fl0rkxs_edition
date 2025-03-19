@@ -110,7 +110,7 @@ pip3 install --user bpython
 
 # Cambiar zona horaria
 # Para listar zonas horarias ejecutar: timedatectl list-timezones
-sudo timedatectl set-timezone "Europe/Bruselas"
+sudo timedatectl set-timezone "Europe/Spain"
 
 mkdir ~/screenshots
 # Copiar todos los archivos de configuración
