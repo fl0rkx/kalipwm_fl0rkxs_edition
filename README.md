@@ -1,10 +1,7 @@
 # ParrotPWM
 
 Despliega parcialmente un entorno de hacking usando un solo script.
-
-![kalipwm-1](https://github.com/user-attachments/assets/0e11571f-7c71-416f-9bb8-32ab9c47d015)
-![kalipwm-2](https://github.com/user-attachments/assets/b67853d2-922d-4303-90a8-4fbc2564555a)
-
+Imagenes
 ## Instalación
 
 - Se recomienda el uso de una instalación nueva/limpia de Parrot OS.
