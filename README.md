@@ -87,6 +87,7 @@ NVim + NVChad
 ### NeoVim + NvChad
 > [!NOTE]
 > El script debe de ejecutarse con permisos root. Siempre bajo vuestra responsabilidad.
+> Se le da permisos de ejecución y se ejecuta con sudo.
 
 ## Créditos
 - Autor del fork:      <a href="https://github.com/fl0rkx">fl0rkx</a>
