@@ -57,7 +57,6 @@ La apariencia de la terminal no viene en el script, unicamente el aspecto del te
 | tmux —help                  | Muestra la ayuda de tmux.                                   |
 | p10k configure              | Configura el tema de terminal Powerlevel10K.                |
 | .zshrc                      | Archivo de configuración de ZSH y alias de comandos.        |
-| bpython                     | Python interactivo en la terminal.                          |
 | exit                        | Borrado seguro del historial al salir de la terminal.       |
 | rmk (archivo)               | Borrado seguro de un archivo con información sensible.      |
 
